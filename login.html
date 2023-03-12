@@ -1,0 +1,113 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<style>
+#container{
+    width:30%;
+    margin:auto;
+    margin-top: 50px;
+    border:1px solid transparent;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+form{
+
+    padding: 10px;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+label{
+    
+    margin-left: 20px;
+    font-size: 22px;
+}
+
+input
+{
+    margin-bottom: 15px;
+    margin-top: 5px;
+    padding: 10px 50px 10px 50px;
+    margin-left: 20px;
+}
+
+h2{
+    text-align: center;
+}
+
+input[type="submit"]
+{
+    margin-top: 10px;
+    padding: 10px 110px 10px 110px;
+}
+
+a{
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+#bottom{
+    display: flex;
+
+}
+
+
+
+
+
+</style>
+<body>
+    
+    <div id="container">
+        <h2>Log in</h2>
+        <form>
+            <label>Email</label><br />
+            <input type="email" id="email" placeholder="Enter email"/><br />
+            <label>Password</label><br />
+            <input type="password" id="password" placeholder="Enter Password"/><br />
+            <input type="submit" value="SIGN IN"/>
+            <div id="bottom">
+                <p>Don't have an account?</p>
+                <a href="signup.html">Sign Up</a>
+            </div>
+        </form>
+       
+    </div>
+   
+</body>
+</html>
+
+<script>
+    document.querySelector("form").addEventListener("submit",login);
+    let arr= JSON.parse(localStorage.getItem("info")) || [];
+
+    
+
+    function login(){
+        let email=document.querySelector("#email").value;
+     let password=document.querySelector("#password").value;
+        
+     let flag=true;
+     arr.forEach(function(ele) {
+        if(email==ele.email && password==ele.password)
+        {
+           flag=false;
+        }
+     });
+
+     if(flag===true)
+     {
+        alert("The crdentials you filled is wrong")
+     }
+     else{
+        alert("login Succesfull")
+     }
+    }
+
+</script>
